@@ -10,11 +10,14 @@
 
 .card > .img-container {
   overflow: hidden;
-  border: 10px;
-  text-align: center; 
-  background:#6CADDC;
   margin: 10px
 }
+
+.card > .img-container-selected {
+  overflow: hidden;
+  margin:0;
+}
+
 .card > .img-container > img {
   height: 100%;
   width: 100%;

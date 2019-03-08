@@ -1,32 +1,45 @@
 import React from "react";
 import "./style.css";
 
+class TileComponent extends React.Component {
+  state = {
+    class: "img-container"
+  };
 
-function TileComponent(props) {
-  return (
-    <div 
-      onmouseover={() => expandImage(props.id)}
-      onMouseOut={() => collapseImage(props.id)}
-      className="card">
-      <div className="img-container" >
-        <img alt={props.id} src={props.image} aria-label="click item" class="click-item shake" />
+  handleMouseOver = event => {
+    this.setState (
+      {
+        class: "img-container-selected"
+      }
+    );
+  };
+
+  handleMouseOut = event => {
+    this.setState (
+      {
+        class: "img-container"
+      }
+    );
+  };
+
+  render() {
+    return (
+      <div 
+        className="card">
+        <div 
+          onMouseOver={this.handleMouseOver}
+          onMouseOut={this.handleMouseOut} 
+          onClick={() => this.props.onClickHandler(this.props.id)}     
+          className={this.state.class}
+          id={this.props.id}>
+          <img
+            alt={this.props.id}
+            src={this.props.image}
+          />
+        </div>
       </div>
-    </div>
-  );
-}
-
-function expandImage(id) {
-
-}
-
-function collapseImage(id) {
-
+    );
+  }
 }
 
 export default TileComponent;
-
-/*
-<div role="img" aria-label="click item" class="click-item shake"
-style="background-image: url(&quot;/assets/images/meeseeks.png&quot;);"></div>
-
-*/
